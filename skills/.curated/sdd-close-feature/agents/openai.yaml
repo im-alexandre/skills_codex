@@ -6,5 +6,4 @@ interface:
 
 agent:
   name: sdd-close-feature
-  description: "Close one completed feature in .codex/PRD.md without modifying source code or deleting context artifacts."
-
+  description: "Close one completed feature in .context/PRD.md without modifying source code or deleting context artifacts."

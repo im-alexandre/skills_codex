@@ -6,5 +6,4 @@ interface:
 
 agent:
   name: sdd-research-feature
-  description: "Run read-only SDD feature research, initialize missing Codex artifacts, and save the result under .codex/context/research."
-
+  description: "Run read-only SDD feature research, initialize missing context artifacts, and save the result under .context/research."

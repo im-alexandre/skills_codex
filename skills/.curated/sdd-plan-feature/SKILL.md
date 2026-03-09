@@ -32,8 +32,8 @@ Single-command SDD skill for `/plan_feature`.
 - `/implement_feature` cannot leave MANIFEST.
 - `/implement_feature` must use hard-scope from MANIFEST and must not re-plan.
 - Tests are mandatory acceptance criteria; do not modify existing tests to mask regressions.
-- `.codex/PRD.md` is cumulative and the single source of truth.
-- `.codex/PROJECT_MAP.md` is an operational cache.
+- `.context/PRD.md` is cumulative and the single source of truth.
+- `.context/PROJECT_MAP.md` is an operational cache.
 - Research and planning NEVER modify source code.
 - Implementation modifies code ONLY after explicit user approval.
 - Anti-overengineering: prefer existing patterns and libraries.
@@ -45,9 +45,9 @@ Single-command SDD skill for `/plan_feature`.
 - This command produces an actionable implementation plan.
 - Read-only: DO NOT modify any source code files.
 - You MAY update documentation artifacts only under:
-  - `.codex/PRD.md`
-  - `.codex/context/plans/*.md`
-  - `.codex/context/specs/*.md` (optional)
+  - `.context/PRD.md`
+  - `.context/plan/*.md`
+  - `.context/specs/*.md` (optional)
 - No risk or complexity estimates.
 - Focus only on an executable plan.
 - The plan must be complete and executable.
@@ -59,21 +59,21 @@ Single-command SDD skill for `/plan_feature`.
 
 Ensure directories exist:
 
-- `.codex/`
-- `.codex/context/research/`
-- `.codex/context/plans/`
-- `.codex/context/specs/`
-- `.codex/context/impl/`
+- `.context/`
+- `.context/research/`
+- `.context/plan/`
+- `.context/specs/`
+- `.context/impl/`
 
 Ensure Codex artifacts exist:
 
-- If `.codex/PRD.md` is missing:
+- If `.context/PRD.md` is missing:
   - Read `references/PRD_TEMPLATE.md`
-  - Create `.codex/PRD.md` from it
+  - Create `.context/PRD.md` from it
   - Do not create empty files
-- If `.codex/PROJECT_MAP.md` is missing:
+- If `.context/PROJECT_MAP.md` is missing:
   - Read `references/PROJECT_MAP_TEMPLATE.md`
-  - Create `.codex/PROJECT_MAP.md` from it
+  - Create `.context/PROJECT_MAP.md` from it
   - Do not create empty files
 
 ## Required Command Flow
@@ -82,13 +82,13 @@ For `/plan_feature` you must execute this workflow in order:
 
 1. Read `references/PLAN_FEATURE_GENERIC.md` fully before starting planning.
 2. Use it as the detailed operating procedure for this skill.
-3. Ensure `.codex/context/plans/` exists.
-4. Ensure `.codex/context/specs/` exists.
-5. Ensure `.codex/PRD.md` exists.
+3. Ensure `.context/plan/` exists.
+4. Ensure `.context/specs/` exists.
+5. Ensure `.context/PRD.md` exists.
 6. Determine planning baseline:
    - if feature research exists, use the latest one automatically
    - else use the latest `/research_codebase` artifact as baseline
-7. Read section `## Open Features` in `.codex/PRD.md`.
+7. Read section `## Open Features` in `.context/PRD.md`.
 8. List all currently open features to the user in pt-BR, even if there is only one.
 9. Ask which feature should be planned:
    - `Qual feature vamos planejar? (slug)`
@@ -119,9 +119,9 @@ For `/plan_feature` you must execute this workflow in order:
 
 17. Create the plan file under:
 
-- `.codex/context/plans/feature_<FEATURE_SLUG>_<TIMESTAMP_YYYYMMDD-HHMM>.md`
+- `.context/plan/feature_<FEATURE_SLUG>_<TIMESTAMP_YYYYMMDD-HHMM>.md`
 
-18. Update `.codex/PRD.md`:
+18. Update `.context/PRD.md`:
 
 - add a short note linking the plan path under the selected open feature
 - do not mark the feature as completed
@@ -133,14 +133,14 @@ For `/plan_feature` you must execute this workflow in order:
 
 Create exactly this file path pattern:
 
-- `.codex/context/plans/feature_<FEATURE_SLUG>_<TIMESTAMP_YYYYMMDD-HHMM>.md`
+- `.context/plan/feature_<FEATURE_SLUG>_<TIMESTAMP_YYYYMMDD-HHMM>.md`
 
 Use this frontmatter:
 
 - `date: "<ISO-8601 with timezone>"`
 - `command: "/plan_feature"`
 - `feature_slug: "<FEATURE_SLUG>"`
-- `research_path: ".codex/context/research/..."`
+- `research_path: ".context/research/..."`
 - `status: "plan-complete"`
 - `tags: ["plan","feature"]`
 
@@ -188,9 +188,9 @@ The plan must also include, per phase:
 
 You must produce exactly these outputs:
 
-- `.codex/context/plans/feature_<FEATURE_SLUG>_<TIMESTAMP>.md`
-- optional `.codex/context/specs/*.md`
-- `.codex/PRD.md` updated with the plan link
+- `.context/plan/feature_<FEATURE_SLUG>_<TIMESTAMP>.md`
+- optional `.context/specs/*.md`
+- `.context/PRD.md` updated with the plan link
 - concise pt-BR summary containing:
   - plan file path
   - number of phases
@@ -215,4 +215,3 @@ Reference templates:
 
 - `references/PRD_TEMPLATE.md`
 - `references/PROJECT_MAP_TEMPLATE.md`
-

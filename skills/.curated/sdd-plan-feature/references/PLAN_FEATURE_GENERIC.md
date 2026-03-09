@@ -7,9 +7,9 @@ Hard rules:
 - This command produces an actionable implementation plan.
 - Read-only: DO NOT modify any source code files.
 - You MAY update documentation artifacts:
-  - .codex/PRD.md
-  - .codex/context/plans/*.md
-  - .codex/context/specs/*.md (optional)
+  - .context/PRD.md
+  - .context/plan/*.md
+  - .context/specs/*.md (optional)
 - No risk/complexity estimates. Focus only on an executable plan.
 - The plan must be complete and executable.
 - Prefer reuse: libraries/dependencies over reimplementing functionality.
@@ -26,9 +26,9 @@ Language policy:
 # ===================================================== 0) BOOTSTRAP
 
 Ensure:
-- .codex/context/plans/ exists
-- .codex/context/specs/ exists
-- .codex/PRD.md exists
+- .context/plan/ exists
+- .context/specs/ exists
+- .context/PRD.md exists
 
 Research baseline rules:
 - If feature research exists: use the latest one automatically.
@@ -73,14 +73,14 @@ If phases == 1:
 Create:
 
 Path:
-- .codex/context/plans/feature_<FEATURE_SLUG>_<TIMESTAMP_YYYYMMDD-HHMM>.md
+- .context/plan/feature_<FEATURE_SLUG>_<TIMESTAMP_YYYYMMDD-HHMM>.md
 
 Frontmatter:
 ---
 date: "<ISO-8601 with timezone>"
 command: "/plan_feature"
 feature_slug: "<FEATURE_SLUG>"
-research_path: ".codex/context/research/..."
+research_path: ".context/research/..."
 status: "plan-complete"
 tags: ["plan","feature"]
 ---
@@ -157,7 +157,7 @@ Keep concise.
 - Research: `<research_path>`
 - Key files: `...`
 
-# ===================================================== 5) UPDATE `.codex/PRD.md`
+# ===================================================== 5) UPDATE `.context/PRD.md`
 
 For the feature entry under Open Features:
 - Add a short note linking the plan path (do not mark completed).

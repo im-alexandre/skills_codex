@@ -33,8 +33,8 @@ Single-command SDD skill for `/implement_feature`.
 - `/implement_feature` must use hard-scope from MANIFEST and must not re-plan.
 - Tests are mandatory acceptance criteria.
 - Never modify existing tests to mask regressions.
-- `.codex/PRD.md` is cumulative and the single source of truth.
-- `.codex/PROJECT_MAP.md` is an operational cache.
+- `.context/PRD.md` is cumulative and the single source of truth.
+- `.context/PROJECT_MAP.md` is an operational cache.
 - Research and planning NEVER modify source code.
 - Implementation modifies code ONLY after explicit user approval.
 - Anti-overengineering: prefer existing patterns and libraries.
@@ -49,7 +49,7 @@ You are in STRICT EXECUTION MODE.
 
 Allowed inputs:
 
-- the selected plan file under `.codex/context/plans/`
+- the selected plan file under `.context/plan/`
 - the single file currently being modified
 - files explicitly listed in the plan MANIFEST (global + current phase)
 
@@ -71,21 +71,21 @@ Absolute prohibitions unless explicitly authorized in MANIFEST:
 
 Ensure directories exist:
 
-- `.codex/`
-- `.codex/context/research/`
-- `.codex/context/plans/`
-- `.codex/context/specs/`
-- `.codex/context/impl/`
+- `.context/`
+- `.context/research/`
+- `.context/plan/`
+- `.context/specs/`
+- `.context/impl/`
 
 Ensure Codex artifacts exist:
 
-- If `.codex/PRD.md` is missing:
+- If `.context/PRD.md` is missing:
   - Read `references/PRD_TEMPLATE.md`
-  - Create `.codex/PRD.md` from it
+  - Create `.context/PRD.md` from it
   - Do not create empty files
-- If `.codex/PROJECT_MAP.md` is missing:
+- If `.context/PROJECT_MAP.md` is missing:
   - Read `references/PROJECT_MAP_TEMPLATE.md`
-  - Create `.codex/PROJECT_MAP.md` from it
+  - Create `.context/PROJECT_MAP.md` from it
   - Do not create empty files
 
 ## Required Command Flow
@@ -95,7 +95,7 @@ For `/implement_feature` you must execute this workflow in order:
 1. Read `references/IMPLEMENT_FEATURE_GENERIC.md` fully before starting implementation.
 2. Use it as the detailed operating procedure for this skill.
 3. If no plan path is provided, ask in pt-BR:
-   - `Qual plano devemos implementar? (path em .codex/context/plans/)`
+   - `Qual plano devemos implementar? (path em .context/plan/)`
    - then wait.
 4. Load the selected plan fully.
 5. Validate the plan before execution.
@@ -107,7 +107,7 @@ For `/implement_feature` you must execute this workflow in order:
 10. Apply changes only if approved.
 11. Run planned verification commands for each phase.
 12. Mark plan checkboxes only after the planned verification passes.
-13. Write/update the implementation log under `.codex/context/impl/`.
+13. Write/update the implementation log under `.context/impl/`.
 14. Provide a concise pt-BR summary at the end.
 15. Do not expand scope beyond the frozen MANIFEST.
 
@@ -168,7 +168,7 @@ Even when approval is broadened (`a`, `f`, `b`), continue showing diffs. Only pr
 
 Write or update exactly one file:
 
-- `.codex/context/impl/feature_<FEATURE_SLUG>_<DATE_YYYYMMDD>.md`
+- `.context/impl/feature_<FEATURE_SLUG>_<DATE_YYYYMMDD>.md`
 
 If the file does not exist, create it with this frontmatter:
 
@@ -177,7 +177,7 @@ If the file does not exist, create it with this frontmatter:
 date: "<ISO-8601 with timezone>"
 command: "/implement_feature"
 feature_slug: "<FEATURE_SLUG>"
-plan_path: ".codex/context/plans/..."
+plan_path: ".context/plan/..."
 status: "in-progress"
 tags: ["impl", "feature"]
 ---
@@ -207,4 +207,3 @@ For each phase, append exactly one section using this structure:
 
 - blockers, deferred items, or `None`
 ```
-

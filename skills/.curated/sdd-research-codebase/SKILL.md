@@ -32,8 +32,8 @@ Single-command SDD skill for `/research_codebase`.
 - `/implement_feature` cannot leave MANIFEST.
 - `/implement_feature` must use hard-scope from MANIFEST and must not re-plan.
 - Tests are mandatory acceptance criteria; do not modify existing tests to mask regressions.
-- `.codex/PRD.md` is cumulative and the single source of truth.
-- `.codex/PROJECT_MAP.md` is an operational cache.
+- `.context/PRD.md` is cumulative and the single source of truth.
+- `.context/PROJECT_MAP.md` is an operational cache.
 - Research and planning NEVER modify source code.
 - Implementation modifies code ONLY after explicit user approval.
 - Anti-overengineering: prefer existing patterns and libraries.
@@ -43,7 +43,7 @@ Single-command SDD skill for `/research_codebase`.
 ## Hard Constraints For This Skill
 
 - Read-only: DO NOT modify any source code files.
-- You MAY update only documentation artifacts under `.codex/`.
+- You MAY update only documentation artifacts under `.context/`.
 - This command analyzes repository architecture and operational structure.
 - This command must not propose implementation plans unless the user explicitly asks.
 - This command must not invent business intent when code evidence is insufficient.
@@ -53,21 +53,21 @@ Single-command SDD skill for `/research_codebase`.
 
 Ensure directories exist:
 
-- `.codex/`
-- `.codex/context/research/`
-- `.codex/context/plans/`
-- `.codex/context/specs/`
-- `.codex/context/impl/`
+- `.context/`
+- `.context/research/`
+- `.context/plan/`
+- `.context/specs/`
+- `.context/impl/`
 
 Ensure Codex artifacts exist:
 
-- If `.codex/PRD.md` is missing:
+- If `.context/PRD.md` is missing:
   - Read `references/PRD_TEMPLATE.md`
-  - Create `.codex/PRD.md` from it
+  - Create `.context/PRD.md` from it
   - Do not create empty files
-- If `.codex/PROJECT_MAP.md` is missing:
+- If `.context/PROJECT_MAP.md` is missing:
   - Read `references/PROJECT_MAP_TEMPLATE.md`
-  - Create `.codex/PROJECT_MAP.md` from it
+  - Create `.context/PROJECT_MAP.md` from it
   - Do not create empty files
 
 ## Required Command Flow
@@ -81,7 +81,7 @@ For `/research_codebase` you must execute this workflow in order:
    - `README.md`
    - `AGENTS.md`
    - `.gitignore`
-   - context folders such as `.claude/`, `.codex/`, `context/`, `docs/`
+   - context folders such as `.claude/`, `.context/`, `context/`, `docs/`
 5. Run Stage 1 repository volume report before deep scan.
 6. Estimate at minimum:
    - approximate number of relevant files
@@ -103,10 +103,10 @@ For `/research_codebase` you must execute this workflow in order:
     - STOP
     - explain the new risk in pt-BR
     - ask authorization before continuing in reduced or adjusted mode
-12. Update `.codex/PRD.md` using the template structure without deleting existing sections.
-13. Update `.codex/PROJECT_MAP.md` incrementally and factually.
+12. Update `.context/PRD.md` using the template structure without deleting existing sections.
+13. Update `.context/PROJECT_MAP.md` incrementally and factually.
 14. Write the research artifact under:
-    - `.codex/context/research/<TIMESTAMP_YYYYMMDD-HHMM>_codebase.md`
+    - `.context/research/<TIMESTAMP_YYYYMMDD-HHMM>_codebase.md`
 15. Return a concise pt-BR summary.
 16. Do not modify application source code or tests.
 
@@ -114,7 +114,7 @@ For `/research_codebase` you must execute this workflow in order:
 
 Create exactly this research artifact path pattern:
 
-- `.codex/context/research/<TIMESTAMP_YYYYMMDD-HHMM>_codebase.md`
+- `.context/research/<TIMESTAMP_YYYYMMDD-HHMM>_codebase.md`
 
 The research artifact header must include:
 
@@ -170,14 +170,14 @@ Artifact rules:
 
 You must produce exactly these outputs:
 
-- `.codex/PRD.md`
-- `.codex/PROJECT_MAP.md`
-- `.codex/context/research/<TIMESTAMP>_codebase.md`
+- `.context/PRD.md`
+- `.context/PROJECT_MAP.md`
+- `.context/research/<TIMESTAMP>_codebase.md`
 - concise pt-BR summary containing:
   - whether Stage 0 completed
   - Stage 1 volume assessment
   - whether deep scan was performed or stopped for authorization
-  - files updated under `.codex/`
+  - files updated under `.context/`
 
 Output constraints:
 
@@ -197,4 +197,3 @@ Reference templates:
 
 - `references/PRD_TEMPLATE.md`
 - `references/PROJECT_MAP_TEMPLATE.md`
-

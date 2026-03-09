@@ -27,7 +27,7 @@ Before any scan or size estimation, always read (if present):
 -   README.md
 -   AGENTS.md
 -   .gitignore
--   Detect context folders (.claude/, .codex/, context/, docs/, etc.)
+-   Detect context folders (.claude/, .context/, context/, docs/, etc.)
 
 Purpose: - Understand project intent - Understand ignore rules -
 Understand automation context
@@ -78,7 +78,7 @@ Suggest reduced mode
 
 # Output Artifacts
 
-## 1. context/research/`<timestamp>`{=html}\_codebase.md
+## 1. .context/research/`<timestamp>`{=html}\_codebase.md
 
 Header must include:
 

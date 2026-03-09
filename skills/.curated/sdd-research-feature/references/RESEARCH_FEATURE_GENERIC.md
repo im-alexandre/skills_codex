@@ -6,8 +6,8 @@ Hard rules:
 
 - Read-only: DO NOT modify any source code files.
 - You MAY update documentation artifacts:
-  - .codex/PRD.md
-  - .codex/context/research/*.md
+  - .context/PRD.md
+  - .context/research/*.md
 - This command focuses on ONE feature.
 - Clarify scope and context — NOT the implementation plan yet.
 - Do NOT propose solutions unless explicitly asked.
@@ -23,8 +23,8 @@ Language policy:
 # ===================================================== 0) BOOTSTRAP
 
 Ensure:
-- .codex/context/research/ exists
-- .codex/PRD.md exists (create from references/PRD_TEMPLATE.md if missing)
+- .context/research/ exists
+- .context/PRD.md exists (create from references/PRD_TEMPLATE.md if missing)
 
 =====================================================
 
@@ -90,7 +90,7 @@ Do NOT:
 Create:
 
 Path:
-.codex/context/research/feature_<FEATURE_SLUG>_<TIMESTAMP_YYYYMMDD-HHMM>.md
+.context/research/feature_<FEATURE_SLUG>_<TIMESTAMP_YYYYMMDD-HHMM>.md
 
 Frontmatter:
 ---
@@ -142,7 +142,7 @@ No Read/Write classification here.
 ## Assumptions
 ## Open Questions (minimal)
 
-# ===================================================== 4) UPDATE `.codex/PRD.md`
+# ===================================================== 4) UPDATE `.context/PRD.md`
 
 Under:
 - ## Open Features

@@ -7,7 +7,7 @@ This command executes an APPROVED implementation plan.
 You are in STRICT EXECUTION MODE.
 
 Allowed inputs:
-- The selected plan file (.codex/context/plans/...)
+- The selected plan file (.context/plan/...)
 - The single file currently being modified
 - Files explicitly listed in the plan MANIFEST (global + current phase)
 
@@ -62,12 +62,12 @@ Language policy:
 =====================================================
 
 Ensure:
-- .codex/context/impl/ exists
-- .codex/PRD.md exists
+- .context/impl/ exists
+- .context/PRD.md exists
 
 If no plan path provided:
 Ask (pt-BR):
-"Qual plano devemos implementar? (path em .codex/context/plans/)"
+"Qual plano devemos implementar? (path em .context/plan/)"
 → Wait.
 
 Load the plan fully.
@@ -121,14 +121,14 @@ If tests fail:
 5) Mark phase items completed in the plan ([ ] → [x]) only after tests PASS.
 
 6) Write an implementation log entry:
-- .codex/context/impl/feature_<FEATURE_SLUG>_<DATE_YYYYMMDD>.md
+- .context/impl/feature_<FEATURE_SLUG>_<DATE_YYYYMMDD>.md
 
 Log frontmatter (if new):
 ---
 date: "<ISO-8601 with timezone>"
 command: "/implement_feature"
 feature_slug: "<FEATURE_SLUG>"
-plan_path: ".codex/context/plans/..."
+plan_path: ".context/plan/..."
 status: "in-progress"
 tags: ["impl","feature"]
 ---

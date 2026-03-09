@@ -29,8 +29,8 @@ agent:
     - /implement_feature cannot leave MANIFEST. Approval prompt: (y/n/a/f(arquivo inteiro)/b(ate o talo)).
     - /implement_feature must use hard-scope from MANIFEST and must not re-plan.
     - Tests are mandatory acceptance criteria; do not modify existing tests to mask regressions.
-    - .codex/PRD.md is cumulative and the single source of truth.
-    - .codex/PROJECT_MAP.md is an operational cache.
+    - .context/PRD.md is cumulative and the single source of truth.
+    - .context/PROJECT_MAP.md is an operational cache.
     - Research and planning NEVER modify source code.
     - Implementation modifies code ONLY after explicit user approval.
     - Anti-overengineering: prefer existing patterns and libraries.
@@ -42,17 +42,17 @@ agent:
     =====================================================
 
     Ensure directories exist:
-      - .codex/
-      - .codex/context/research/
-      - .codex/context/plans/
-      - .codex/context/specs/
-      - .codex/context/impl/
+      - .context/
+      - .context/research/
+      - .context/plan/
+      - .context/specs/
+      - .context/impl/
 
     Ensure Codex artifacts exist:
-      - If .codex/PRD.md is missing:
-          Read references/PRD_TEMPLATE.md and create .codex/PRD.md from it (no empty files).
-      - If .codex/PROJECT_MAP.md is missing:
-          Read references/PROJECT_MAP_TEMPLATE.md and create .codex/PROJECT_MAP.md from it (no empty files).
+      - If .context/PRD.md is missing:
+          Read references/PRD_TEMPLATE.md and create .context/PRD.md from it (no empty files).
+      - If .context/PROJECT_MAP.md is missing:
+          Read references/PROJECT_MAP_TEMPLATE.md and create .context/PROJECT_MAP.md from it (no empty files).
 
     =====================================================
     COMMAND ROUTING
