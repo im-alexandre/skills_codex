@@ -6,14 +6,6 @@ Repositorio de skill para Codex focada em Spec-Driven Development (SDD). O pacot
 
 SDD desloca a disciplina de engenharia para artefatos que a IA consegue seguir com menos ambiguidade: especificacoes, constraints, testes e manifestos de escopo. Em vez de pedir "faz isso ai" e aceitar diffs sem leitura, voce primeiro esclarece o problema, congela o plano, limita o blast radius e so depois implementa.
 
-Isso ficou especialmente importante com a popularizacao do `vibe coding`:
-
-- Andrej Karpathy cunhou o termo para descrever um modo de programar em que voce "esquece que o codigo existe"; Simon Willison reforca que isso pode ser otimo para prototipos de baixo risco, mas nao equivale a engenharia responsavel para software de producao.
-- A Thoughtworks vem destacando que, em fluxos com IA, o rigor sobe para a revisao da especificacao: especificacoes ruins geram codigo ruim em escala, e TDD/testes viram validacao deterministica para uma geracao nao deterministica.
-- No artigo da Thoughtworks sobre SDD, a tese central e direta: SDD vai alem de `vibe coding` ao separar planejamento de implementacao, explicitar restricoes tecnicas e manter um humano no loop para revisar e validar o que sera executado.
-
-Em outras palavras: `vibe coding` e excelente para explorar; SDD e o que voce usa quando o software precisa continuar correto, compreensivel e evolutivo depois da demo.
-
 ## Estrutura do repositorio
 
 ```text
@@ -41,26 +33,9 @@ Arquivos importantes:
 
 ## Getting started
 
-Esta skill nao esta na raiz do repositorio. Por isso, ao instalar a partir do GitHub, o `--path` e necessario.
+### Instalação 
 
-### Opcao 1: usar o helper script do `skill-installer`
-
-PowerShell:
-
-```powershell
-python "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" `
-  --repo im-alexandre/skills_codex `
-  --path skills/.curated/sdd-workflow
-```
-
-Ou apontando para a URL da arvore GitHub:
-
-```powershell
-python "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" `
-  --url https://github.com/im-alexandre/skills_codex/tree/main/skills/.curated/sdd-workflow
-```
-
-### Opcao 2: pedir para o Codex usar a skill `skill-installer`
+#### Aproveita que tá usando IA e pede para o Codex usar a skill `skill-installer`. segue o prompt:
 
 ```text
 Use a skill skill-installer para instalar a skill deste repositorio:
@@ -70,12 +45,9 @@ Use a skill skill-installer para instalar a skill deste repositorio:
 
 Depois da instalacao, reinicie o Codex para carregar a nova skill.
 
-Se o seu ambiente usa `python3` em vez de `python`, ajuste apenas o launcher; os argumentos permanecem os mesmos.
-
 ## Como o workflow funciona
 
 O pacote unifica cinco comandos:
-
 1. `/research_codebase`
 2. `/research_feature`
 3. `/plan_feature`
@@ -103,7 +75,7 @@ Isso transforma o repositorio de trabalho em um ambiente onde a IA nao age "no e
 
 ## Comandos disponiveis
 
-### `/research_codebase`
+### `$sdd-workflow research_codebase`
 
 Objetivo:
 
@@ -120,7 +92,7 @@ Quando usar:
 Exemplo:
 
 ```text
-/research_codebase
+$sdd-workflow research_codebase
 ```
 
 Resultado esperado:
@@ -129,7 +101,7 @@ Resultado esperado:
 - um `PRD.md` inicial
 - um `PROJECT_MAP.md` operacional
 
-### `/research_feature`
+### `$sdd-workflow research_feature`
 
 Objetivo:
 
@@ -147,7 +119,7 @@ Como funciona:
 Exemplo:
 
 ```text
-/research_feature
+$sdd-workflow research_feature
 ```
 
 Exemplo de caso de uso:
@@ -158,7 +130,7 @@ Problema: o sistema so exporta CSV e o financeiro precisa manter formulas no Exc
 Arquivos conhecidos: src/reports, src/export, tests/reports.
 ```
 
-### `/plan_feature`
+### `$sds-workflow plan_feature`
 
 Objetivo:
 
@@ -171,12 +143,12 @@ Como funciona:
 - le a feature em aberto no `.context/PRD.md`
 - reutiliza o `Current State Snapshot` da pesquisa
 - cria `.context/plan/feature_<slug>_<timestamp>.md`
-- registra o plano de forma que `/implement_feature` nao precise replanejar
+- registra o plano de forma que `$sdd-workflow implement_feature` nao precise "pensar ou inventar muito"
 
 Exemplo:
 
 ```text
-/plan_feature
+$sdd-workflow plan_feature 
 ```
 
 Exemplo de caso de uso:
@@ -185,7 +157,7 @@ Exemplo de caso de uso:
 Planeje a feature `exportar-relatorio-xlsx` em fases pequenas, sem sair dos diretorios ja autorizados.
 ```
 
-### `/implement_feature`
+### `$sdd-workflow implement_feature`
 
 Objetivo:
 
@@ -206,7 +178,7 @@ Como funciona:
 Exemplo:
 
 ```text
-/implement_feature
+$sdd-workflow implement_feature
 ```
 
 Exemplo de caso de uso:
@@ -215,7 +187,7 @@ Exemplo de caso de uso:
 Implemente o plano `.context/plan/feature_exportar-relatorio-xlsx_20260401-1030.md`.
 ```
 
-### `/close_feature`
+### `$sdd-workflow close_feature`
 
 Objetivo:
 
@@ -232,7 +204,7 @@ Como funciona:
 Exemplo:
 
 ```text
-/close_feature
+$sdd-workflow close_feature
 ```
 
 Exemplo de caso de uso:
@@ -245,11 +217,11 @@ Feche a feature `exportar-relatorio-xlsx`.
 
 Para usar a skill como ela foi pensada:
 
-1. Rode `/research_codebase` quando estiver entrando em um repo novo.
-2. Rode `/research_feature` para cada feature relevante.
-3. Rode `/plan_feature` e revise o `MANIFEST` antes de aprovar.
-4. Rode `/implement_feature` somente depois que o plano estiver coerente.
-5. Rode `/close_feature` quando a feature tiver sido entregue e verificada.
+1. Rode `$sdd-workflow research_codebase` quando estiver entrando em um repo novo.
+2. Rode `$sdd-workflow research_feature` para cada feature relevante.
+3. Rode `T$sdd-workflow plan_feature` e revise o `MANIFEST` antes de aprovar.
+8. Rode `$sdd-workflow implement_feature` somente depois que o plano estiver coerente.
+9. Rode `$sdd-workflow close_feature` quando a feature tiver sido entregue e verificada.
 
 Esse encadeamento existe para evitar tres problemas comuns de agentes de codigo:
 
